@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+
+import Proyectos from './components/Proyectos'
+import Home from './components/Home'
+import Waves from './components/Waves'
+
+
+import { 
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
+
+import ProyectoState from './context/proyectos/ProyectoState'
+import WavesState from './context/waves/WavesState'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+    
+    <ProyectoState>
+    <WavesState>
+
+      <p>Hola mundo</p>
+
+      <Router>
+        <Switch>
+          <Route exact path='/proyectos' component={Proyectos} />
+          <Route exact path='/waves' component={Waves} />
+          <Route exact path='/' component={Home} />
+
+        </Switch>
+
+      </Router>
+      </WavesState>
+      </ProyectoState>
+    </>
   );
 }
 
