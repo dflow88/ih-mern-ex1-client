@@ -8,11 +8,11 @@ export default function Waves() {
     const {
         waves,
         getWaves,
-        createWave,
+        // createWave,
     } = context
 
 
-    const [ createActive, setCreateActive ] = useState(false)
+    // const [ createActive, setCreateActive ] = useState(false)
 
     const [ newWave, setNewWave ] = useState({
         name: "",
@@ -22,19 +22,19 @@ export default function Waves() {
         waveType: ""
     })
 
-    const activateCreate = (event) => {
-        setCreateActive(true)
-        // createWave(element)
-    }
+    // const activateCreate = (event) => {
+    //     setCreateActive(true)
+    //     // createWave(element)
+    // }
 
-    const handleChange = (event) => {
-        event.preventDefault()
+    // const handleChange = (event) => {
+    //     event.preventDefault()
         
-        setNewWave({
-            
-        })
+    //     setNewWave({
 
-    }
+    //     })
+
+    // }
 
     return (
         <>
@@ -44,13 +44,13 @@ export default function Waves() {
                 </button>
             </div>
 
-            <div>
+            {/* <div>
                 <button onClick={(e) => {activateCreate(e)}}>
                     Create new Wave
                 </button>
-            </div>
+            </div> */}
 
-            <div style={{display: "flex", flexDirection: "column", display: createActive ? "block" : "none"}}>
+            {/* <div style={{display: "flex", flexDirection: "column", display: createActive ? "block" : "none"}}>
                 <h2>Create new wave</h2>
                 <form onSubmit={(e) => {createWave(e)}}>
                     <label>Name:</label>
@@ -87,7 +87,7 @@ export default function Waves() {
                         Add wave
                     </button>
                 </form>
-            </div>
+            </div> */}
         
             {
                 waves.map((e) => {

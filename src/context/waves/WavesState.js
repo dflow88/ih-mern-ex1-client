@@ -29,22 +29,22 @@ const WavesState = (props) => {
         }
     }
 
-    const createWave = async () => {
-        try {
+    // const createWave = async () => {
+    //     try {
 
 
 
-        } catch (error) {
+    //     } catch (error) {
 
-        }
-    }
+    //     }
+    // }
 
     return (
         <WavesContext.Provider
             value={{
                 waves: globalState.waves,
                 getWaves,
-                createWave
+                // createWave
             }}
         >
             {props.children}
