@@ -15,7 +15,7 @@ const WavesState = (props) => {
 
     const getWaves = async () => {
         try {
-            const res = await axios.get("http://localhost:3005/api/waves")
+            const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/waves`)
             const updatedWaves = res.data
             console.log(res)
 
@@ -32,7 +32,7 @@ const WavesState = (props) => {
     const createWave = async () => {
         try {
 
-            
+
 
         } catch (error) {
 

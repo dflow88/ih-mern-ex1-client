@@ -30,7 +30,7 @@ const ProyectoState = (props) => {
 
     const crearProyecto = async (dataForm) => {
         try {
-            const res = await axios.post("http://localhost:3005/api/proyectos/crear",  dataForm)
+            const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/proyectos/crear`,  dataForm)
             obtenerProyectos(res)
 
         } catch (error) {
@@ -40,7 +40,7 @@ const ProyectoState = (props) => {
 
     const obtenerProyectos = async () => {
         try {
-            const respuesta = await axios.get("http://localhost:3005/api/proyectos")
+            const respuesta = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/proyectos`)
 
             const proyectosActualizados = respuesta.data
 
@@ -64,7 +64,7 @@ const ProyectoState = (props) => {
             proyectoId: dataForm._id,
             nombre: dataForm.nombre
         }
-        const res = await axios.post("http://localhost:3005/api/proyectos/actualizar", form)
+        const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/proyectos/actualizar`, form)
         obtenerProyectos()
         console.log(res)
     }
@@ -74,7 +74,7 @@ const ProyectoState = (props) => {
             proyectoId: dataForm._id
         }
 
-        const res = await axios.post("http://localhost:3005/api/proyectos/eliminar", form)
+        const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/proyectos/eliminar`, form)
         console.log(res)
         obtenerProyectos()
     }
