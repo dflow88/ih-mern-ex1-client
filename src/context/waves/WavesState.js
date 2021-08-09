@@ -43,7 +43,7 @@ const WavesState = (props) => {
         <WavesContext.Provider
             value={{
                 waves: globalState.waves,
-                getWaves,
+                getWaves//,
                 // createWave
             }}
         >

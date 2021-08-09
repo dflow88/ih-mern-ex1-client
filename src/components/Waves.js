@@ -1,4 +1,5 @@
-import React, {useState, useContext} from 'react'
+import React, {//useState,
+     useContext} from 'react'
 
 import WavesContext from './../context/waves/WavesContext'
 
@@ -7,20 +8,20 @@ export default function Waves() {
     const context = useContext(WavesContext)
     const {
         waves,
-        getWaves,
+        getWaves//,
         // createWave,
     } = context
 
 
     // const [ createActive, setCreateActive ] = useState(false)
 
-    const [ newWave, setNewWave ] = useState({
-        name: "",
-        country: "",
-        biggestSizeM: "",
-        season: "",
-        waveType: ""
-    })
+    // const [ newWave, setNewWave ] = useState({
+    //     name: "",
+    //     country: "",
+    //     biggestSizeM: "",
+    //     season: "",
+    //     waveType: ""
+    // })
 
     // const activateCreate = (event) => {
     //     setCreateActive(true)

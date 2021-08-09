@@ -15,7 +15,4 @@ export default (globalState, action) => {
             return globalState
     }
 
-
-
-
 }

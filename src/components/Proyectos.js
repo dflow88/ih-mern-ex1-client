@@ -11,7 +11,6 @@ export default function Proyectos() {
     const {
         proyectos,
         darkMode,
-        usuario,
         obtenerProyectos,
         actualizarProyecto,
         eliminarProyecto,
@@ -33,7 +32,6 @@ export default function Proyectos() {
 
     }, [])
     
-
 
     const manejarCambios = (event) => {
         event.preventDefault()
