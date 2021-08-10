@@ -36,7 +36,6 @@ export default function Proyectos() {
     const manejarCambios = (event) => {
         event.preventDefault()
         
-        console.log(event.target.value)
 
         setNuevoProyecto({
             ...nuevoProyecto,

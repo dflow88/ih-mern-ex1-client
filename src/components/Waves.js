@@ -1,4 +1,4 @@
-import React, {//useState,
+import React, {useState,
      useContext} from 'react'
 
 import WavesContext from './../context/waves/WavesContext'
@@ -8,34 +8,60 @@ export default function Waves() {
     const context = useContext(WavesContext)
     const {
         waves,
-        getWaves//,
-        // createWave,
+        getWaves,
+        createWave,
+        activateCreate,
+        createActive,
+        setCreateActive,
+        newWave,
+        setNewWave,
+        updateWave,
+        deleteWave
     } = context
 
+    const [ editActive, setEditActive ] = useState(false)
 
-    // const [ createActive, setCreateActive ] = useState(false)
-
-    // const [ newWave, setNewWave ] = useState({
-    //     name: "",
-    //     country: "",
-    //     biggestSizeM: "",
-    //     season: "",
-    //     waveType: ""
-    // })
-
-    // const activateCreate = (event) => {
-    //     setCreateActive(true)
-    //     // createWave(element)
-    // }
-
-    // const handleChange = (event) => {
-    //     event.preventDefault()
+    const handleChange = (event) => {
+        event.preventDefault()
         
-    //     setNewWave({
+        setNewWave({
+            ...newWave,
+            [event.target.name]: event.target.value
+        })
+    }
 
-    //     })
+    const sendForm = (event) => {
+        event.preventDefault()
+        if (createActive) {createWave(newWave)}
+        if (editActive) {editWave(event)}
+    }
 
-    // }
+    const editWave = (event) => {
+        event.preventDefault()
+        console.log(newWave)
+        updateWave(newWave)
+        setEditActive(false)
+        // setEditActive(false)
+        // setNewWave({
+        //     name: "",
+        //     country: "",
+        //     biggestSizeM: "",
+        //     season: "",
+        //     waveType: ""
+        // })
+    }
+
+    const activateEdit = (event, element) => {
+        event.preventDefault()
+        setEditActive(true)
+        setNewWave(element)
+    }
+
+    const eraseWave = (event, element) => {
+
+        event.preventDefault()
+        deleteWave(element)
+    }
 
     return (
         <>
@@ -45,15 +71,21 @@ export default function Waves() {
                 </button>
             </div>
 
-            {/* <div>
+            <div>
                 <button onClick={(e) => {activateCreate(e)}}>
                     Create new Wave
                 </button>
-            </div> */}
+            </div>
 
-            {/* <div style={{display: "flex", flexDirection: "column", display: createActive ? "block" : "none"}}>
+            <div style={{display: "flex", flexDirection: "column", display: createActive || editActive ? "block" : "none"}}>
+                {
+                createActive ?
                 <h2>Create new wave</h2>
-                <form onSubmit={(e) => {createWave(e)}}>
+                :
+                <h2>Edit wave</h2>
+                }
+                
+                <form onSubmit={(e) => {sendForm(e)}}>
                     <label>Name:</label>
                     <input
                         name="name"
@@ -85,22 +117,29 @@ export default function Waves() {
                         onChange={(e) => { handleChange(e) }}
                     />
                     <button>
-                        Add wave
+                        { createActive ?
+                        "Add wave"
+                        :
+                        "Update wave"
+                        }
                     </button>
                 </form>
-            </div> */}
-        
+            </div>
+            <h1>Waves of the World</h1>
             {
                 waves.map((e) => {
                     return(
 
                         <div style={{display: e.name ? "block" : "none"}}>
-
+                            
                             <h2>{e.name}</h2>
+
                             <h4>{e.country}</h4>
                             <p>This is a {e.waveType}.</p>
                             <p>The biggest wave here is around {e.biggestSizeM} meters</p>
                             <p>The best time to surf is {e.season}.</p>
+                            <button onClick={(evento) => {activateEdit(evento, e)}}>Edi</button>
+                            <button onClick={(evento) => {eraseWave(evento, e)}}>Delete</button>
 
                             
                         </div>
